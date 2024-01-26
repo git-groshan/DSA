@@ -1,0 +1,13 @@
+for fixed window size 
+1. max/min subarray of size k 
+2. 1st -ve in every win of size k 
+3. count occurent of anagram 
+4. max of all subarray of size k
+5. max of min for every win size 
+
+for variable win size 
+1. longest/smallest subarray of sum k 
+2. largest sub string with k distict chars
+3. length of largest substring with no repeating characs
+4. pick toy
+5. min window substring
