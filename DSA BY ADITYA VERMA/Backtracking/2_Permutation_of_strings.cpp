@@ -18,9 +18,24 @@ void printAllUniquePermutationOfStringUsingRecursion(string ip , string op , vec
     }
 
 }
-void printAllUniquePermutationOfStringUsingBacktracking()
+/*
+In Backtracking approach , for each idx we will swap it with all other charcter to generate other permutation 
+*/
+void printAllUniquePermutationOfStringUsingBacktracking(int start,string &s , vector<string>&ans)
 {
-
+    if(start == s.size() -1 ){
+        ans.push_back(s);
+        return;
+    }
+    unordered_set<char>us;
+    for(int i=start;i<s.size();i++){
+        if(us.find(s[i])==us.end()){
+            us.insert(s[i]);
+        swap(s[start] , s[i]);
+        printAllUniquePermutationOfStringUsingBacktracking(start+1, s , ans);
+        swap(s[start] , s[i]);
+        }
+    }
 }
 
 
@@ -31,16 +46,23 @@ Time Complexicity of Recursive Tree
 
 2. Recrusive Tree TC
 - use Recursive tree to derive TC of Recursion program 
-- 
-4. TC of last solution 
+- workDone = work done on Node x no of node 
+- total no of node depends on height of Tree and nodes at each level  generally 2^n is no of nodes 
+
+3. TC of last solution 
+- In last solution i.e permutation of string 
+- no of node  = n!
+- work done at one node = O(nXn)
+- T.C = O(n^2xn!) = O(n! )
 4. Don't be too attached 
 */
 int main(){
     // string s = "abc";//input
-    string s = "aab";//input
+    string s = "abc";//input
     string cur = ""; // output
     vector<string>v;
-    printAllUniquePermutationOfStringUsingRecursion(s , cur , v);
+   // printAllUniquePermutationOfStringUsingRecursion(s , cur , v);
+   printAllUniquePermutationOfStringUsingBacktracking(0 , s, v);
     for(auto &str : v) cout<<str<<" ";
 
 return 0;
