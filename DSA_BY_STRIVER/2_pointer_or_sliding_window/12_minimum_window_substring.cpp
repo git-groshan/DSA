@@ -75,6 +75,37 @@ string bruteForceMinWindowSubstring(string s , string t)
 }
 
 
+string minWindowSubstring_striver(string s , string t){
+    int n = s.size() , m = t.size();
+    int minWinLen = INT_MAX;
+    unordered_map<char,int>hash;
+    int startIdx = -1;
+    int cnt = 0; // to check how many char of t has been processed 
+    // store the freq of t 
+    for(int i=0;i<m;i++){
+        hash[t[i]]++;
+    }
+    int l=0 , r=0;
+    while(r < n){
+        if(hash[s[r]] > 0) cnt=cnt+1;
+        hash[s[r]]--;
+        while(cnt == m){
+            if(r-l+1 < minWinLen){
+                minWinLen = r-l+1;
+                startIdx = l;
+
+            }
+            // slide the window 
+            hash[s[l]]++;
+            if(hash[s[l]] > 0) cnt = cnt - 1;
+            l++;
+        }
+        r = r+1;
+    }
+    
+    return startIdx == -1 ? "":s.substr(startIdx , m);
+
+}
 
 
 // ########### leetcode solution ##########

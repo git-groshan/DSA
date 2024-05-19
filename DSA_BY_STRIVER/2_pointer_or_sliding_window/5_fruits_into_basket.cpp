@@ -3,7 +3,7 @@ using namespace std;
 /*
 Fruite into basket 
 
-Given 2 basket , There are n three which represented by index , 
+Given 2 basket , There are n tree which represented by index , 
 which produces fruit type arr[i] , you need to collect fruits in basket Given that 
 basket can contain only one type of fruits 
 
